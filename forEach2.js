@@ -1,5 +1,12 @@
 function isFunction(x){return typeof(x)==='function'};//noTypeConversionHere!
 
+/*
+//#1
+function forEach(m,f){
+	var r=m.length;
+	if(r && isFunction(f)){r+=0;for(var i=0;i<r;i++){f(m[i])};r=1}else{r=0};
+	return r
+};
 
 //#2
 function forEach(m,f){
@@ -10,6 +17,22 @@ function forEach(m,f){
 	};
 	return r
 }
+*/
+
+
+//#3
+function forEach(m,f){
+	var r=m.length;
+	if(r && isFunction(f)){
+		for(var i=0,l=r+0;l--;f(m[i++]));
+		r=1;
+	}else{
+		r=0;
+	};
+	return r
+};
+
+
 
 //Test:
 var goodaction=function(x){console.log(x)},aliasaction=goodaction,badaction=1000;
@@ -40,7 +63,7 @@ true
 3
 true
 	alias action sucess?  yes
-	bad action sucess?  yes
+	bad action sucess? no
 #3, Object {}
 	good action sucess?  no
 	alias action sucess?  no
@@ -48,5 +71,5 @@ true
 #4, Object {a: "b"}
 	good action sucess?  no
 	alias action sucess?  no
-	bad action sucess?  no 
+	bad action sucess?  no
 */
