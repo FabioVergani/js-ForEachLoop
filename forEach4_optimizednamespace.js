@@ -1,13 +1,15 @@
 //#3c
+//#<
 (function(w,s){
-	var ns=w[s]=Object.create(null),k=function(p,f){var e=w[p]=ns[p]=f.bind(ns);return e};
+	var o=w[s]=Object.create(null),k=function(p,f){var e=w[p]=o[p]=f.bind(o);return e};
 
-	k('isFunction',function(x){return typeof(x)==='function'});
- 	k('forEach',function(m,f){var e=this; return e.isFunction(f)?e.forEach.run(m,f):0}).run=function(m,f){var r=m.length;if(r){for(var i=0,l=r+0;l--;f(m[i++]));r=1}else{r=0};return r};
+	k('isFunction',function(x){return typeof(x)==='function'});//noTypeConversionHere!
+ 	k('forEach',function(m,f){var e=this;return e.isFunction(f)?e.forEach.run(m,f):0}).run=function(m,f){var r=m.length;if(r){for(var i=0,l=r+0;l--;f(m[i++]));r=1}else{r=0};return r};
 
-	Object.freeze(ns);
-	ns=null;
+	Object.freeze(o);
+	k=o=null;
 })(window,'namespaceId');
+//>
 
 
 
